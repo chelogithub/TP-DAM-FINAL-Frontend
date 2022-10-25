@@ -54,6 +54,19 @@ export class MedicionesPage implements OnInit {
 
 
 ionViewDidEnter() {
+    Highcharts.setOptions({
+      lang: {
+          months: [
+              'Enero', 'Febrero', 'Marzo', 'Abril',
+              'Mayo', 'Junio', 'Julio', 'Agosto',
+              'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+          ],
+          weekdays: [
+              'Domingo', 'Lunes', 'Martes', 'Miercoles',
+              'Jueves', 'Viernes', 'Sabado'
+          ]
+      }
+  });
   this.mostrargrafico();
   this.convertirDatos();
   setTimeout(()=>{
@@ -89,6 +102,7 @@ updateChart(){
 
 mostrargrafico(){
                           this.chartOptions={
+
                             chart: {
                               zoomType: 'x'
                             },
@@ -101,8 +115,10 @@ mostrargrafico(){
                             },
                             xAxis: {
                               type: 'datetime',
+                              crosshair: true
                             },
                             yAxis: {
+                              crosshair: true,
                               title: {
                                 text: 'Diferencial de presión'
                               }

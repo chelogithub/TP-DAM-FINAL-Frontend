@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Medida } from '../model/Medida';
 
 import * as Highcharts from 'highcharts';
+import { reverse } from 'dns';
 
 require('highcharts/modules/data')(Highcharts);
 require('highcharts/modules/exporting')(Highcharts);
@@ -73,6 +74,7 @@ convertirDatos(){
                                 Number(this.mediciones[i].fecha.substring(17,19))),
                                 Number(this.mediciones[i].valor)];
    }
+   console.log(this.dataproc);
 }
 
 updateChart(){
@@ -98,7 +100,7 @@ mostrargrafico(){
                                 'Medido en relacion a los kPA' : 'Pinch the chart to zoom in'
                             },
                             xAxis: {
-                              type: 'datetime'
+                              type: 'datetime',
                             },
                             yAxis: {
                               title: {
@@ -144,5 +146,65 @@ mostrargrafico(){
                           this.myChart = Highcharts.chart('container', this.chartOptions );
                         }
         }
+
+//         mostrargrafico(){
+//           this.chartOptions={
+//             chart: {
+//               zoomType: 'x'
+//             },
+//             title: {
+//               text: 'Nivel de humedad del suelo'
+//             },
+//             subtitle: {
+//               text: document.ontouchstart === undefined ?
+//                 'Medido en relacion a los kPA' : 'Pinch the chart to zoom in'
+//             },
+//             xAxis: {
+//               type: 'datetime'
+//             },
+//             yAxis: {
+//               title: {
+//                 text: 'Diferencial de presión'
+//               }
+//             },
+//             legend: {
+//               enabled: false
+//             },
+//             plotOptions: {
+//               area: {
+//                 fillColor: {
+//                   linearGradient: {
+//                     x1: 0,
+//                     y1: 0,
+//                     x2: 0,
+//                     y2: 1
+//                   },
+//                   stops: [
+//                     [0, Highcharts.getOptions().colors[0]],
+//                     [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+//                   ]
+//                 },
+//                 marker: {
+//                   radius: 2
+//                 },
+//                 lineWidth: 1,
+//                 states: {
+//                   hover: {
+//                     lineWidth: 1
+//                   }
+//                 },
+//                 threshold: null
+//               }
+//             },
+
+//             series: [{
+//               type: 'area',
+//               name: 'kPA',
+//               data: this.dataproc
+//             }]
+//           };
+//           this.myChart = Highcharts.chart('container', this.chartOptions );
+//         }
+// }
 
 
